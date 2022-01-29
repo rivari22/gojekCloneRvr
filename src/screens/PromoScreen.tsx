@@ -5,7 +5,7 @@ import {Text} from '../components/Text';
 const PromoScreen = () => {
   return (
     <SafeAreaView>
-      <Text label="ini PromoScreen" />
+      <Text label="Coming soon" />
     </SafeAreaView>
   );
 };

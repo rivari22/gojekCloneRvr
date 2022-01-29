@@ -5,13 +5,9 @@ import {Text} from '../../components/Text';
 import {ContainerSection} from '../../layout/Container';
 import {MarginEnum} from '../../styles/Spacer';
 import Carousel from 'react-native-snap-carousel';
+import {IPromotionHome} from '../../interface/Home';
 
-interface PromotionHome {
-  id: number;
-  image: string;
-}
-
-const promotionList: Array<PromotionHome> = [
+const promotionList: Array<IPromotionHome> = [
   {id: 1, image: ''},
   {id: 2, image: ''},
 ];
@@ -19,7 +15,7 @@ const promotionList: Array<PromotionHome> = [
 const screenWidth = Dimensions.get('screen').width;
 
 const PromotionHome = () => {
-  const renderItemCarousel = ({item}: {item: PromotionHome}) => {
+  const renderItemCarousel = ({item}: {item: IPromotionHome}) => {
     return (
       <View
         style={{
@@ -54,6 +50,7 @@ const PromotionHome = () => {
         <Text label="Dapetin diskon dan harga spesialny di Tokopedia sekarang sebelum kehabisan!" />
       </ContainerSection>
       <Carousel
+        inactiveSlideScale={1}
         data={promotionList}
         renderItem={renderItemCarousel}
         sliderWidth={screenWidth - 32}

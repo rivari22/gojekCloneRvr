@@ -5,7 +5,7 @@ import {Text} from '../components/Text';
 const ChatScreen = () => {
   return (
     <SafeAreaView>
-      <Text label="ini Chat screen" />
+      <Text label="Coming soon" />
     </SafeAreaView>
   );
 };

@@ -10,7 +10,7 @@ import {MarginEnum} from '../../styles/Spacer';
 
 const LevelHome = () => {
   return (
-    <ContainerSection paddingTop={12}>
+    <ContainerSection paddingTop={14}>
       <FlexRow
         style={{
           padding: 14,

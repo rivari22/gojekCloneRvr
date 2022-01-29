@@ -1,35 +1,28 @@
 /* eslint-disable react-native/no-inline-styles */
-import React from 'react';
-import {Image, TouchableOpacity, View} from 'react-native';
+import React, {useMemo} from 'react';
+import {Dimensions, Image, TouchableOpacity, View} from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 import {Text} from '../../components/Text';
 import {ContainerSection} from '../../layout/Container';
 import {FlexRow} from '../../layout/Flex';
 import {MarginEnum} from '../../styles/Spacer';
 import IconFA5 from 'react-native-vector-icons/FontAwesome5';
+import IconAnt from 'react-native-vector-icons/AntDesign';
+import IconMaterialComunity from 'react-native-vector-icons/MaterialCommunityIcons';
+import {IProductContent} from '../../interface/Home';
 
-interface IProductList {
-  id: number;
-  image: string;
-  title: string;
-  category?: string;
-  rate?: string;
-}
-
-interface IProductContent {
-  detail: {
-    title: string;
-    subtitle: string;
-    desc?: string;
-    button?: {
-      label: string;
-      onClick: () => undefined;
-    };
-  };
-  productContentList: Array<IProductList>;
-}
+const screenWidth = Dimensions.get('screen').width;
 
 const ProductContent = ({product}: {product: IProductContent}) => {
+  const RenderIcon = useMemo(() => {
+    return {
+      gojek: (
+        <IconMaterialComunity name="alpha-g-circle" size={16} color={'green'} />
+      ),
+      gomart: <IconFA5 name="shopping-basket" size={16} color={'red'} />,
+    };
+  }, []);
+
   const renderItemCarousel = ({item}: {item: any}) => {
     return (
       <View
@@ -66,9 +59,10 @@ const ProductContent = ({product}: {product: IProductContent}) => {
             )}
           </View>
           {item.rate && (
-            <View>
-              <Text label={item.rate} />
-            </View>
+            <FlexRow>
+              <IconAnt name="star" size={16} color={'orange'} />
+              <Text label={item.rate} marginLeft={MarginEnum['1x']} />
+            </FlexRow>
           )}
         </View>
       </View>
@@ -78,7 +72,7 @@ const ProductContent = ({product}: {product: IProductContent}) => {
     <View style={{paddingTop: 32}}>
       <ContainerSection>
         <FlexRow>
-          <IconFA5 name="shopping-basket" size={16} color={'red'} />
+          {RenderIcon[product.detail.title]}
           <Text
             label={product.detail.title}
             variant="large"
@@ -112,9 +106,11 @@ const ProductContent = ({product}: {product: IProductContent}) => {
       <Carousel
         data={product.productContentList}
         renderItem={renderItemCarousel}
-        sliderWidth={400}
+        sliderWidth={500}
         itemWidth={160}
-        slideStyle={{marginTop: 14}}
+        slideStyle={{marginTop: 14, marginLeft: 14}}
+        containerCustomStyle={{marginLeft: -(screenWidth * 0.4)}}
+        inactiveSlideScale={1}
       />
     </View>
   );

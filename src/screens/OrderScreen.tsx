@@ -5,7 +5,7 @@ import {Text} from '../components/Text';
 const OrderScreen = () => {
   return (
     <SafeAreaView>
-      <Text label="ini Order screen" />
+      <Text label="Coming soon" />
     </SafeAreaView>
   );
 };

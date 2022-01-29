@@ -34,7 +34,7 @@ const QuickAccess = () => {
     [],
   );
   return (
-    <ContainerSection paddingTop={10}>
+    <ContainerSection paddingTop={14}>
       <View>
         <Text
           label="Akses cepat"

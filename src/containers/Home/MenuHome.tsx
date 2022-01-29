@@ -64,13 +64,13 @@ const MenuHome = () => {
         id: 8,
         label: 'Lainnya',
         onClick: () => undefined,
-        Icon: () => <FlexRow />,
+        Icon: () => <IconIon name="ios-grid" size={24} />,
       },
     ],
     [],
   );
   return (
-    <ContainerSection paddingTop={4}>
+    <ContainerSection paddingTop={8}>
       <FlexRow flexWrap="wrap" style={{justifyContent: 'space-between'}}>
         {menuList.map(menu => (
           <TouchableOpacity
